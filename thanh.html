@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Chat</title>
+    <link rel="stylesheet" href="./custom.css">
+    <style>
+            </style>
+
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <!-- Tin nhắn sẽ được thêm vào đây -->
+    </div>
+  <div class="input-container">
+        <input type="text" id="message-input" placeholder="Nhập tin nhắn...">
+        <button onclick="sendMessage()">Gửi</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const chatContainer = document.getElementById('chat-container');
+            const messageText = messageInput.value;
+
+            if (messageText.trim() !== '') {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.textContent = messageText;
+                chatContainer.appendChild(messageElement);
+
+                // Cuộn xuống cuối hộp chat
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                // Xóa nội dung trong ô nhập
+                messageInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
